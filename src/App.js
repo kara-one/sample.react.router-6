@@ -23,6 +23,7 @@ const routes = [
 ];
 
 function App() {
+  console.log('routes: ', routes);
   const routeResult = useRoutes(routes);
 
   return (
