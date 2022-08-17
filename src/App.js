@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import './App.css';
 import { Link, useRoutes } from 'react-router-dom';
 import { About, Home, Users } from './Components';
