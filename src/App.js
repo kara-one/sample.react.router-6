@@ -1,23 +1,50 @@
-import logo from './logo.svg';
 import './App.css';
+import { Link, useRoutes } from 'react-router-dom';
+import { About, Home, Users } from './Components';
+
+const routes = [
+  {
+    path: '/',
+    element: <Home />,
+  },
+  {
+    path: '/about',
+    children: [
+      {
+        path: '',
+        element: <About />,
+      },
+      {
+        path: 'users',
+        element: <Users />,
+      },
+    ],
+  },
+];
 
 function App() {
+  const routeResult = useRoutes(routes);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <nav>
+        <ul>
+          <li>
+            {/* <A href="/">Home</A> */}
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            {/* <A href="/about">About</A> */}
+            <Link to="/about">About</Link>
+          </li>
+          <li>
+            {/* <A href="/users">Users</A> */}
+            <Link to="/about/users">Users</Link>
+          </li>
+        </ul>
+      </nav>
+
+      {routeResult}
     </div>
   );
 }
